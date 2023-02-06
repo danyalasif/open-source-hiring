@@ -1,9 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
-import styles from '@/styles/Home.module.css'
 
 type CompanyData = {
+  id: number,
   companyName: string,
   companyImage: string,
   openRoles: number,
@@ -16,6 +14,7 @@ type CompanyData = {
 
 const data: CompanyData[] = [
   {
+    id: 1,
     companyName: "MUI",
     companyImage: "https://mui.com/",
     openRoles: 10,
@@ -37,10 +36,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className='m-8 flex flex-col'>
-        <div className='p-4 mb-8 bg-red-900 border-blue-900 rounded-xl'>
+        <div className='p-4 mb-8 bg-red-900 border-blue-900 rounded-xl gap-4 flex flex-col'>
           <h2 className='text-3xl'>What is Open Source Hiring</h2>
           <p>Best way to prove that you can excel in remote work is by contributing to open source</p>
-          <p>Go one step forward and work on open source projects that also hire regulary</p>
+          <p>Go one step forward and work on open source projects that also hire regularly</p>
           <p>Build Connections</p>
           <p>Prove to the rest of the team that they can work with you and vice versa</p>
 
@@ -50,15 +49,15 @@ export default function Home() {
         <h3 className='text-xl mb-4'>Companies</h3>
         <div className='flex flex-row w-max'>
           {data.map(item => {
-            return <div className='flex flex-col gap-4 p-4 border rounded-xl bg-zinc-800 border-white'>
+            return <div key={item.id} className='flex flex-col gap-4 p-4 border rounded-xl bg-zinc-800 border-white'>
               <p className='text-center'>{item.companyName}</p>
               <p>Open Roles: {item.openRoles}</p>
               <p>Job Location: {item.remote ? "Remote" : "On-Site"}</p>
               <p>Company Location: {item.location}</p>
               <div className='flex justify-around bg-slate-900 mt-4 p-2'>
-                <a href={item.githubSrc} target="_blank" className='hover:underline hover:bg-red-500'>GitHub</a>
-                <a href={item.website} target="_blank" className='hover:underline hover:bg-red-500'>Website</a>
-                <a href={item.careersPage} target="_blank" className='hover:underline hover:bg-red-500'>Careers</a>
+                <a href={item.githubSrc} target="_blank" rel="noreferrer" className='hover:underline hover:bg-red-500'>GitHub</a>
+                <a href={item.website} target="_blank" rel="noreferrer" className='hover:underline hover:bg-red-500'>Website</a>
+                <a href={item.careersPage} target="_blank" rel="noreferrer" className='hover:underline hover:bg-red-500'>Careers</a>
 
                 </div>
 
