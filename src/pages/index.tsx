@@ -46,8 +46,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="p-8 flex flex-col h-[90vh]">
-        <div className="p-4 mb-8 bg-red-900 border-blue-900 rounded-xl gap-4 flex flex-col">
+      <main className="p-8 flex flex-col min-h-[90vh]">
+        <div className="p-4 mb-8 bg-red-300 border-blue-900 rounded-xl gap-4 flex flex-col">
           <h2 className="text-3xl">What is Open Source Hiring</h2>
           <p>
             Best way to prove that you can excel in remote work is by
@@ -70,18 +70,20 @@ export default function Home() {
         </div>
 
         <h3 className="text-xl mb-4">Companies</h3>
-        <div className="flex flex-row w-max gap-4">
+        <div className="flex flex-row gap-4 flex-wrap">
           {data.map((item) => {
             return (
               <div
                 key={item.id}
-                className="flex flex-col gap-4 p-4 border rounded-xl bg-zinc-800 border-white"
+                className="flex flex-col gap-4 p-4 border rounded-xl bg-zinc-200 border-white"
               >
-                <p className="text-center">{item.companyName}</p>
+                <p className="text-center bg-orange-400 text-xl font-bold">
+                  {item.companyName}
+                </p>
                 <p>Open Roles: {item.openRoles}</p>
                 <p>Job Location: {item.remote ? "Remote" : "On-Site"}</p>
                 <p>Company Location: {item.location}</p>
-                <div className="flex justify-around items-center bg-slate-900 mt-4 p-2">
+                <div className="flex justify-around items-center bg-slate-200 mt-4 p-2 border border-black rounded-xl">
                   <a
                     href={item.githubSrc}
                     target="_blank"
@@ -98,7 +100,7 @@ export default function Home() {
                       className="octicon octicon-mark-github v-align-middle"
                     >
                       <path
-                        fill-rule="evenodd"
+                        fillRule="evenodd"
                         d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
                       ></path>
                     </svg>
@@ -125,18 +127,6 @@ export default function Home() {
           })}
         </div>
       </main>
-      <footer className="mt-auto p-8 text-lg bg-slate-900">
-        Created by
-        <a
-          className="bg-orange-500 text-black font-extrabold hover:bg-red-400 ml-2"
-          href="https://danyalasif.com"
-        >
-          Danyal Asif
-        </a>
-        <div>
-          <a href="https://github.com/danyalasif/open-source-hiring">GitHub</a>
-        </div>
-      </footer>
     </>
   );
 }
