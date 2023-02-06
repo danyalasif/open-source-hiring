@@ -3,7 +3,29 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 
-const inter = Inter({ subsets: ['latin'] })
+type CompanyData = {
+  companyName: string,
+  companyImage: string,
+  openRoles: number,
+  remote: boolean,
+  location: string,
+  githubSrc: string,
+  careersPage: string,
+  website: string 
+}
+
+const data: CompanyData[] = [
+  {
+    companyName: "MUI",
+    companyImage: "https://mui.com/",
+    openRoles: 10,
+    remote: true,
+    location: "Remote",
+    githubSrc: "https://github.com/mui",
+    careersPage: "https://mui.com/careers/",
+    website: "https://mui.com/" 
+  }
+]
 
 export default function Home() {
   return (
@@ -14,108 +36,34 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
-        <div className={styles.description}>
-          <p>
-            Get started by editing&nbsp;
-            <code className={styles.code}>src/pages/index.tsx</code>
-          </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              By{' '}
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                width={100}
-                height={24}
-                priority
-              />
-            </a>
-          </div>
+      <main className='m-8 flex flex-col'>
+        <div className='p-4 mb-8 bg-red-900 border-blue-900 rounded-xl'>
+          <h2 className='text-3xl'>What is Open Source Hiring</h2>
+          <p>Best way to prove that you can excel in remote work is by contributing to open source</p>
+          <p>Go one step forward and work on open source projects that also hire regulary</p>
+          <p>Build Connections</p>
+          <p>Prove to the rest of the team that they can work with you and vice versa</p>
+
+          <p>This project collects all the open source projects which are hiring remotely</p>
         </div>
 
-        <div className={styles.center}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-          <div className={styles.thirteen}>
-            <Image
-              src="/thirteen.svg"
-              alt="13"
-              width={40}
-              height={31}
-              priority
-            />
-          </div>
-        </div>
+        <h3 className='text-xl mb-4'>Companies</h3>
+        <div className='flex flex-row w-max'>
+          {data.map(item => {
+            return <div className='flex flex-col gap-4 p-4 border rounded-xl bg-zinc-800 border-white'>
+              <p className='text-center'>{item.companyName}</p>
+              <p>Open Roles: {item.openRoles}</p>
+              <p>Job Location: {item.remote ? "Remote" : "On-Site"}</p>
+              <p>Company Location: {item.location}</p>
+              <div className='flex justify-around bg-slate-900 mt-4 p-2'>
+                <a href={item.githubSrc} target="_blank" className='hover:underline hover:bg-red-500'>GitHub</a>
+                <a href={item.website} target="_blank" className='hover:underline hover:bg-red-500'>Website</a>
+                <a href={item.careersPage} target="_blank" className='hover:underline hover:bg-red-500'>Careers</a>
 
-        <div className={styles.grid}>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
+                </div>
 
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={inter.className}>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p className={inter.className}>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+            </div>
+          })}
         </div>
       </main>
     </>
