@@ -23,6 +23,17 @@ const data: CompanyData[] = [
     githubSrc: "https://github.com/mui",
     careersPage: "https://mui.com/careers/",
     website: "https://mui.com/" 
+  },
+  {
+    id: 2,
+    companyName: "liveblocks",
+    companyImage: "https://liveblocks.io/",
+    openRoles: 2,
+    remote: true,
+    location: "Remote",
+    githubSrc: "https://github.com/liveblocks",
+    careersPage: "https://join.team/liveblocks#team-jobs",
+    website: "https://liveblocks.io/" 
   }
 ]
 
